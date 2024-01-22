@@ -5,6 +5,7 @@
 #include <sstream>
 #include <thread>
 #include <mutex>
+#include <condition_variable>
 #include "game_data.h"
 
 // Constructor
