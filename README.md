@@ -15,6 +15,45 @@
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
+To upgrade gcc/g++ to version 8.0 on Ubuntu/Debian-based systems, please follow these instructions:
+
+1. Update Package Lists
+
+```shell
+sudo apt update
+```
+
+2. Install the Software Properties Common Package (if not already installed):
+
+```shell
+sudo apt install software-properties-common
+```
+
+3. Add the Toolchain Test PPA (which contains newer versions of tools like GCC)
+
+```shell
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+```
+
+4. Install GCC 8
+
+```shell
+sudo apt install gcc-8 g++-8
+```
+
+5. Update GCC 8
+
+```shell
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-8
+```
+
+6. Verify the installation
+
+```shell
+gcc --version
+```
+
 ## 2. Basic Build Instructions
 
 1. Clone this repo.
