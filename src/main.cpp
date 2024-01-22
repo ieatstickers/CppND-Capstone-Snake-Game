@@ -21,5 +21,11 @@ int main() {
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+  if (gameDataPtr->GetTopScore() > topScoreBeforeGame) {
+    std::cout << "Nice! You set a new top score!" << "\n";
+  } else {
+    std::cout << "Better luck next time! You didn't set a new top score this time." << "\n";
+  }
+  
   return 0;
 }
