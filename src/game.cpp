@@ -1,10 +1,12 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include "game_data.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
+Game::Game(std::size_t grid_width, std::size_t grid_height, std::shared_ptr<GameData> data)
     : snake(grid_width, grid_height),
       engine(dev()),
+      gameData(std::move(data)),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
   PlaceFood();
@@ -36,7 +38,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(score, frame_count, gameData->GetTopScore());
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -80,6 +82,10 @@ void Game::Update() {
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;
+    
+    if (score > gameData->GetTopScore()) {
+      gameData->SetTopScore(score);
+    }
   }
 }
 

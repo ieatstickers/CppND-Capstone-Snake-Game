@@ -2,6 +2,7 @@
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
+#include "game_data.h"
 
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
@@ -13,7 +14,9 @@ int main() {
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
-  Game game(kGridWidth, kGridHeight);
+  std::shared_ptr<GameData> gameDataPtr = std::make_shared<GameData>();
+  int topScoreBeforeGame = gameDataPtr->GetTopScore();
+  Game game(kGridWidth, kGridHeight, gameDataPtr);
   game.Run(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
