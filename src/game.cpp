@@ -1,8 +1,9 @@
-#include "game.h"
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <algorithm>
 #include "SDL.h"
+#include "game.h"
 #include "game_data.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height, std::shared_ptr<GameData> data)
