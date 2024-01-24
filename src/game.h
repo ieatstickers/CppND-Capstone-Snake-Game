@@ -3,6 +3,7 @@
 
 #include <random>
 #include <mutex>
+#include <atomic>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
