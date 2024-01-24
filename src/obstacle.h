@@ -1,8 +1,11 @@
 
+#ifndef OBSTACLE_H
+#define OBSTACLE_H
+
 #include <vector>
 
 class Obstacle {
-  public:
+public:
     const int x;
     const int y;
     const int size;
@@ -11,8 +14,10 @@ class Obstacle {
     bool CoordinatesOverlap(int x, int y) const;
     bool OverlapsWith(Obstacle const &other) const;
     std::vector<std::pair<int, int>> GetOccupiedCoordinates() const;
-    
-  private:
+
+private:
     std::vector<std::pair<int, int>> _occupiedCoordinates;
-    
+  
 };
+
+#endif
