@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "game.h"
 #include "game_data.h"
+#include "obstacle.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height, std::shared_ptr<GameData> data)
     : grid_width(grid_width),
